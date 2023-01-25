@@ -1,0 +1,50 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+  ofstream fou;
+  fou.open("g.txt");
+  ofstream fout;
+  fout.open("h.txt");
+  ifstream fin;
+  fin.open("f.txt");
+  if (!fin.is_open())
+    cout << "err";
+  else
+  {
+    int a, p=1, np=0, pc=0, npc=0;
+    float ap,gp;
+    int count = 0;
+    
+    while(fin >> a)
+        count++;
+    fin.close();
+    int *mas=new int [count];
+
+    fin.open("f.txt");
+    int i=0;
+    while(fin >> a){
+      mas[i++]=a;
+    }
+
+    for (int i=0; i<count; ++i) {
+      if(mas[i] % 2 == 0){
+        p*= mas[i];
+        pc++;
+      } else {
+        np+= mas[i];
+        npc++;
+      }
+    }
+    ap = np/npc;
+    gp = pow(p,1.0/pc);
+    fout<<"Середнє арифметичне: "<<ap;
+    fou<<"Середнє геометричне: "<<gp;
+  }
+  fin.close();
+  fout.close();
+  return 0;
+}

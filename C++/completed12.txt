@@ -1,0 +1,60 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+  ofstream fout;
+  fout.open("dob.txt");
+  ifstream fin;
+  fin.open("f.txt");
+  if (!fin.is_open())
+    cout << "err";
+  else
+  {
+    int a, summ, dob;
+    int count = 0;
+    
+    while(fin >> a)
+        count++;
+    fin.close();
+    int *mas=new int [count];
+
+    fin.open("f.txt");
+    int i=0;
+    while(fin >> a){
+      mas[i++]=a;
+    }
+        
+    summ = mas[0];
+    dob = mas[0];
+    for (int i=1; i<count; ++i) {
+        summ+=mas[i];
+        dob*=mas[i];
+      
+    }
+    fout<<dob<<endl;
+
+    fstream f;
+    f.open("f.txt", ios::in);
+    if (f)
+    {
+        string buf;
+        while (getline(f, buf))
+        {
+          ofstream add;
+          add.open("f.txt", ios::app);
+          add << " "<<summ;
+          add.close();    
+        }
+    }
+     
+    delete []mas;
+  }
+
+
+  fin.close();
+  fout.close();
+  return 0;
+}

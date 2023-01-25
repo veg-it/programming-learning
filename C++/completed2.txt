@@ -1,0 +1,39 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+  ifstream fin;
+  fin.open("f.txt");
+  if (!fin.is_open())
+    cout << "err";
+  else
+  {
+    int a, nb=0, nm=0;
+    int count = 0;
+    
+    while(fin >> a)
+        count++;
+    fin.close();
+    int *mas=new int [count];
+
+    fin.open("f.txt");
+    int i=0;
+    while(fin >> a){
+      mas[i++]=a;
+    }
+    nb=mas[0];
+    nm=mas[0];
+    for (int i=0; i<count; ++i) {
+      if(mas[i] > nb)
+        nb = mas[i];
+      if(mas[i] < nm) 
+        nm = mas[i];
+    }
+    cout << "Сумма:" << nb+nm << endl << "Різниця: "<< mas[0]-mas[count-1];
+  }
+  fin.close();
+  return 0;
+}

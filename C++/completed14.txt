@@ -1,0 +1,40 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+  ofstream fout;
+  fout.open("h.txt");
+  ifstream fin;
+  fin.open("f.txt");
+  if (!fin.is_open())
+    cout << "err";
+  else
+  {
+    int a, dob=0;
+    int count = 0;
+    
+    while(fin >> a)
+        count++;
+    fin.close();
+    int *mas=new int [count];
+
+    fin.open("f.txt");
+    int i=0;
+    while(fin >> a){
+      mas[i++]=a;
+    }
+
+    dob = mas[0];
+    for (int i=1; i<count; ++i) {
+      if (mas[i] != 0)
+        dob*=mas[i];
+    }
+    fout << dob;
+  }
+  fout.close();
+  fin.close();
+  return 0;
+}

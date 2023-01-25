@@ -1,0 +1,53 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+  ofstream fou;
+  fou.open("g.txt");
+  ifstream fout;
+  fout.open("h.txt");
+  ifstream fin;
+  fin.open("f.txt");;
+  if (!fin.is_open())
+    cout << "err";
+  else
+  {
+    int a, dob=0;
+    int count = 0;
+    int mat[4][4];
+    int mat2[4][4];
+
+    while(fin >> a){
+      for (int i=0; i<4; ++i) {
+        for (int j=0; j<4; ++j) {
+          mat[i][j]=a;
+        }
+      }
+    }
+
+    while(fout >> a){
+      for (int x=0; x<4; ++x) {
+        for (int c=0; c<4; ++c) {
+          mat2[x][c]=a;
+        }
+      }
+    }
+
+    for (int i=0; i<4; i++) {
+      for (int j=0; j<4; j++){
+        fou << " " << mat[i][j] + mat2[i][j];
+        cout << " " << mat[i][j] + mat2[i][j];
+      }
+      cout << endl;  
+      fou << endl; 
+    }
+
+  }
+  fou.close();
+  fout.close();
+  fin.close();
+  return 0;
+}

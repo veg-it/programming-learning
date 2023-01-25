@@ -1,0 +1,23 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+  ofstream fout;
+  fout.open("rez.txt");
+  
+  int i=0;
+  while(i < 5){
+    int a;
+    cout << "Введіть числа: "<<endl;
+    cin >> a;
+    if (a % 3 == 0) {
+      fout<<a<<" ";
+      i++;
+    }
+  }
+  fout.close();
+  return 0;
+}

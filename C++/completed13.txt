@@ -1,0 +1,28 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+
+  ofstream fout;
+  fout.open("rez.txt");
+
+  int a,b;
+  float c,s;
+  
+  cout << "Катет 1: ";
+  cin >> a;
+  cout << "Катет 2: ";
+  cin >> b;
+
+  c = sqrt(pow(a,2)+pow(b,2));
+  s = (a * b)/2;
+
+
+  fout<<"Гіпотенуза: "<<c<<endl;
+  fout<<"Площа: "<<s<<endl;
+  fout.close();
+  return 0;
+}
